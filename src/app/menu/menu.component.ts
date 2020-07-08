@@ -12,4 +12,4 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+}  // End of the 'MenuComponent' class
