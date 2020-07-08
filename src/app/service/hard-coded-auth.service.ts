@@ -19,7 +19,7 @@ export class HardCodedAuthService {
   authenticate(username, password) {
     if (username === 'josh' && password === 'password') {
       // Store a var in the browser
-      sessionStorage.setItem('authenticatedUser', username);
+      sessionStorage.setItem('authenticatedUser', username);  // IS NOT WORKING!
       return true;
     } 
     return false;
