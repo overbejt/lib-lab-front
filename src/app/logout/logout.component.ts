@@ -10,6 +10,7 @@ export class LogoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    sessionStorage.removeItem('authenticatedUser');
   }
 
-}
+}  // End of the 'LogoutComponent' class
