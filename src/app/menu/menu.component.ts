@@ -8,9 +8,19 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public router : Router) { }
+  constructor(
+    public router : Router
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
   }
+
+  // This is the method that will check if the user is logged in or not.
+  loggedIn() {
+    if (sessionStorage.getItem('authenticatedUser')) {
+      return true;
+    }
+    return false;    
+  }  // End of the 'loggedIn' method
 
 }  // End of the 'MenuComponent' class
