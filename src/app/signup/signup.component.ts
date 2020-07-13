@@ -30,7 +30,6 @@ export class SignupComponent implements OnInit {
    * @returns True when the username is not empty.  Otherwise returns false.
    */
   validUsername () : boolean {
-
     if (this.username != null) {
       return true;
     }
@@ -53,7 +52,7 @@ export class SignupComponent implements OnInit {
    * This is the method that will be invoked when the user tries to submit 
    * their credentials.
    */
-  handleSignup() {
+  handleSignup() : void {
     // if (this.auth.authenticate(this.username, this.password)) {
     if (this.validUsername() && this.validPassword()) {
       // When both are valid, redirect to the login page
