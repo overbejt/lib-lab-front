@@ -13,7 +13,7 @@ export class LogoutComponent implements OnInit {
     // Remove the 'authenticated' user from the session
     sessionStorage.removeItem('authenticatedUser');
     // Remove the 'token' from the session
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('token'); 
   }
 
 }  // End of the 'LogoutComponent' class

@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
 
   // This is the method that will check if the user is logged in or not.
   loggedIn() {
-    return this.hardCodedAuth.isLoggedIn();
+    return this.hardCodedAuth.isLoggedIn(); 
   }  // End of the 'loggedIn' method
 
 }  // End of the 'MenuComponent' class

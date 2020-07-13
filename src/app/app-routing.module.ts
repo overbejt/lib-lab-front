@@ -7,7 +7,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookComponent } from './book/book.component';
 import { RouteGuardService } from './service/route-guard.service';
-const routes: Routes = [
+  const routes: Routes = [
   { 
     path : "", component : LoginComponent 
   },
