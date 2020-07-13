@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
     } else {
       this.validLogin = false;
     }
-    console.log('Valid user: ' + this.validLogin);
   }  // End of the 'handleLogin' method
 
 }  // End of the 'LoginComponent' class
