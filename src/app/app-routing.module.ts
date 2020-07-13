@@ -6,17 +6,33 @@ import { SignupComponent } from './signup/signup.component';
 import { LogoutComponent } from './logout/logout.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookComponent } from './book/book.component';
-
-
+import { RouteGuardService } from './service/route-guard.service';
 const routes: Routes = [
-  { path : "", component : LoginComponent },
-  { path : "login", component : LoginComponent },
-  { path : "signup", component : SignupComponent },
-  { path : "logout", component : LogoutComponent },
-  { path : "list-book", component : BookListComponent },
-  { path : "book", component : BookComponent },
-  { path : "**", component : ErrorComponent }
-];
+  { 
+    path : "", component : LoginComponent 
+  },
+  { 
+    path : "login", component : LoginComponent 
+  },
+  { 
+    path : "signup", component : SignupComponent 
+  },
+  { 
+    path : "logout", component : LogoutComponent,
+    canActivate : [ RouteGuardService ] 
+  },
+  { 
+    path : "list-book", component : BookListComponent, 
+    canActivate : [ RouteGuardService ] 
+  },
+  { 
+    path : "book", component : BookComponent,
+    canActivate : [ RouteGuardService ] 
+  },
+  { 
+    path : "**", component : ErrorComponent 
+  }
+];  // End of the 'Routes' array
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

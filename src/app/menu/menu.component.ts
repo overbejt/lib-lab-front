@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HardCodedAuthService } from '../service/hard-coded-auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   constructor(
-    public router : Router
+    public router : Router,
+    private hardCodedAuth: HardCodedAuthService
   ) { }
 
   ngOnInit(): void {    
@@ -17,10 +19,7 @@ export class MenuComponent implements OnInit {
 
   // This is the method that will check if the user is logged in or not.
   loggedIn() {
-    if (sessionStorage.getItem('authenticatedUser')) {
-      return true;
-    }
-    return false;    
+    return this.hardCodedAuth.isLoggedIn();
   }  // End of the 'loggedIn' method
 
 }  // End of the 'MenuComponent' class
