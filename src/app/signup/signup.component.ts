@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SignUpService } from '../service/sign-up.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
   password : string;
 
   constructor(
-    // Signup service shouldgo here
+    private signupService : SignUpService,
     private router : Router
   ) { }
 
@@ -50,15 +51,24 @@ export class SignupComponent implements OnInit {
 
   /**
    * This is the method that will be invoked when the user tries to submit 
-   * their credentials.
+   * their sign up credentials.
    */
   handleSignup() : void {
-    // if (this.auth.authenticate(this.username, this.password)) {
+    // Make sure that the username and password are not empty    
     if (this.validUsername() && this.validPassword()) {
-      // When both are valid, redirect to the login page
-      this.router.navigate(['login']);
-      this.validSignup = true;
+      // Send the credentials to the back-end
+      if (this.signupService.signup(this.username, this.password) {
+        // When the user has successfully been signed up, 
+        // redirect to the login page.
+        this.router.navigate(['login']);        
+      } else {
+        // Change the error message 
+        this.errorMsg = 'Username is already in use';
+        // Otherwise, toggle the error message on
+        this.validSignup = false;  
+      }
     } else {
+      // Otherwise, toggle the error message on
       this.validSignup = false;
     }
   }  // End of the 'handleSignup' method
