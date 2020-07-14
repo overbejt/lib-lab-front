@@ -57,7 +57,7 @@ export class SignupComponent implements OnInit {
     // Make sure that the username and password are not empty    
     if (this.validUsername() && this.validPassword()) {
       // Send the credentials to the back-end
-      if (this.signupService.signup(this.username, this.password) {
+      if (this.signupService.signup(this.username, this.password)) {
         // When the user has successfully been signed up, 
         // redirect to the login page.
         this.router.navigate(['login']);        
