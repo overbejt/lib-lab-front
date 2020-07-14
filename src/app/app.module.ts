@@ -12,7 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { LogoutComponent } from './logout/logout.component';
 import { BookComponent } from './book/book.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,8 @@ import { HttpClient } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClient
+    FormsModule,  // Needed for ngModel
+    HttpClientModule // Needed for http
   ],
   providers: [],
   bootstrap: [AppComponent]

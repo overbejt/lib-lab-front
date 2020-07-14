@@ -57,16 +57,21 @@ export class SignupComponent implements OnInit {
     // Make sure that the username and password are not empty    
     if (this.validUsername() && this.validPassword()) {
       // Send the credentials to the back-end
-      if (this.signupService.signup(this.username, this.password)) {
-        // When the user has successfully been signed up, 
-        // redirect to the login page.
-        this.router.navigate(['login']);        
-      } else {
-        // Change the error message 
-        this.errorMsg = 'Username is already in use';
-        // Otherwise, toggle the error message on
-        this.validSignup = false;  
-      }
+      let execSignup = this.signupService.signup(this.username, this.password) 
+      execSignup.subscribe(
+        data => {
+          // When the user has successfully been signed up, 
+          // redirect to the login page.
+          this.router.navigate(['login']);        
+          console.log('Successful signup');
+        }, 
+        error => {          
+          // Otherwise, toggle the error message on
+          this.validSignup = false;  
+          // Change the error message 
+          this.errorMsg = 'Username is already in use';
+        }
+      );        
     } else {
       // Otherwise, toggle the error message on
       this.validSignup = false;
