@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HardCodedAuthService } from '../service/hard-coded-auth.service';
 import { JwtAuthenticationService } from '../service/jwt-authentication.service';
 
 @Component({
@@ -17,7 +16,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router : Router,
-    private auth : HardCodedAuthService,
     private jwt : JwtAuthenticationService
   ) { }
 

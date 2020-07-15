@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HardCodedAuthService } from '../service/hard-coded-auth.service';
+import { JwtAuthenticationService } from '../service/jwt-authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +11,7 @@ export class MenuComponent implements OnInit {
 
   constructor(
     public router : Router,
-    private hardCodedAuth: HardCodedAuthService
+    private jwt : JwtAuthenticationService
   ) { }
 
   ngOnInit(): void {    
@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
 
   // This is the method that will check if the user is logged in or not.
   loggedIn() {
-    return this.hardCodedAuth.isLoggedIn(); 
+    return this.jwt.isLoggedIn(); 
   }  // End of the 'loggedIn' method
 
 }  // End of the 'MenuComponent' class
