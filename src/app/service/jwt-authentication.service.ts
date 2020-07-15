@@ -33,16 +33,14 @@ export class JwtAuthenticationService {
     return this.http.post<Token>(url, body).pipe(
       map(
         data => {
+          console.log('token recieved');
+          console.log(data);
           // Store the username
           sessionStorage.setItem(AUTHENTICATED_USER, username);
           // Store the token
-          sessionStorage.setItem(TOKEN, data.data);
+          sessionStorage.setItem(TOKEN, data.token);
           // Send the data back
           return data;
-        },
-        error => {
-          // Send the error back
-          return error;
         }
       )
     );
@@ -92,5 +90,5 @@ export class JwtAuthenticationService {
  * from the  API.
  */
 export class Token {
-  constructor (public data : string) { }
+  constructor (public token : string) { }
 }  // End of the 'Token' class

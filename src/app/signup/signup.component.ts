@@ -71,11 +71,12 @@ export class SignupComponent implements OnInit {
           // Change the error message 
           this.errorMsg = 'Username is already in use';
         }
-      );        
+      );
     } else {
       // Otherwise, toggle the error message on
       this.validSignup = false;
     }
+      
   }  // End of the 'handleSignup' method
 
 }  // End of the 'SignupComponent' class

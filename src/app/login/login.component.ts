@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HardCodedAuthService } from '../service/hard-coded-auth.service';
+import { JwtAuthenticationService } from '../service/jwt-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router : Router,
-    private auth : HardCodedAuthService
+    private auth : HardCodedAuthService,
+    private jwt : JwtAuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -26,12 +28,20 @@ export class LoginComponent implements OnInit {
    * This is the method that will perform authentication when a user logs in.
    */
   handleLogin() {
-    if (this.auth.authenticate(this.username, this.password)) {
-      this.router.navigate(['list-book']);
-      this.validLogin = true;
-    } else {
-      this.validLogin = false;
-    }
+    // Attempt to login
+    this.jwt.login(this.username, this.password).subscribe(
+      data => {
+        // Navigate to the book list page
+        this.router.navigate(['list-book']);
+        console.log('successful login');
+      }, 
+      error => {
+        // Update the error message
+        this.errorMsg = 'Invalid Login Credentials';
+        // Toggle the validLogin boolean
+        this.validLogin = false;
+      }
+    );
   }  // End of the 'handleLogin' method
 
 }  // End of the 'LoginComponent' class
