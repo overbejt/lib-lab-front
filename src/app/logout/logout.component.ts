@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtAuthenticationService } from '../service/jwt-authentication.service';
 
 @Component({
   selector: 'app-logout',
@@ -7,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private jwt : JwtAuthenticationService
+  ) { }
 
   ngOnInit(): void {
-    // Remove the 'authenticated' user from the session
-    sessionStorage.removeItem('authenticatedUser');
-    // Remove the 'token' from the session
-    sessionStorage.removeItem('token'); 
+    // Have the jwt service log the user out
+    this.jwt.logout();
   }
 
 }  // End of the 'LogoutComponent' class
