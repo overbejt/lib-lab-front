@@ -46,8 +46,42 @@ export class BookListComponent implements OnInit {
    * This is the method that will redirect the user to the Book page so that 
    * they can add/update a book.
    */
-  navigateToBook() {
-    this.router.navigate(['book']);
+  navigateToBook(book : Book) {
+    // TODO: This method keeps making the error page pop up.  Need to take a 
+    //       fresh look at it later.
+    
+    // Check if book is undefined, AKA creating a new book
+    if (book === undefined) {
+      // When it is, initialize it to a book with no state variables initialized
+      book = new Book(undefined, undefined, undefined);
+    }
+    // Navigate to the book page, passing this book object as a parameter
+    this.router.navigate(['book/', book]);
   }  // End of the 'navigateToBook' method
+
+  /**
+   * This is the method that will allow the user to update the selected book.
+   * It will use the DataService service to send a PUT request to the API 
+   * with the book's id number.
+   * 
+   * @param bookId The Id of the Book object that the user wants to edit.
+   */
+  updateBook(bookId : number) {    
+    // Find the book the user selected
+    let toEdit = this.books.find(b => b.id === bookId);
+    // Navigate to the book page and pass the selected book as a parameter
+    this.navigateToBook(toEdit);
+  }  // End of the 'updateBook' method
+
+  /**
+   * This is the method that will delete the selected book.  It will use the
+   * DataService service to send a DELET call to the API with the books's 
+   * id number.
+   * 
+   * @param bookId The id of the Book object that the user wants to delete.
+   */
+  deleteBook(bookId : number) {
+    // Make magic happen
+  }  // End of the 'deleteBook' method
 
 }  // End of the 'BookListComponent' class

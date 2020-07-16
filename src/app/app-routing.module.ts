@@ -26,7 +26,7 @@ import { RouteGuardService } from './service/route-guard.service';
     canActivate : [ RouteGuardService ] 
   },
   { 
-    path : "book", component : BookComponent,
+    path : "book/:bookParam", component : BookComponent,
     canActivate : [ RouteGuardService ] 
   },
   { 

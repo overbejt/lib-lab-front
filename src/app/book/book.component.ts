@@ -12,4 +12,4 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+}  // End of the 'BookComponent' class
