@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService, Book } from '../service/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -12,7 +13,8 @@ export class BookListComponent implements OnInit {
   books : Book[];
   
   constructor(
-    private data : DataService 
+    private data : DataService,
+    private router : Router 
   ) { }
 
   ngOnInit(): void {
@@ -39,5 +41,13 @@ export class BookListComponent implements OnInit {
       }
     );
   }  // End of the 'getBooks' method
+
+  /**
+   * This is the method that will redirect the user to the Book page so that 
+   * they can add/update a book.
+   */
+  navigateToBook() {
+    this.router.navigate(['book']);
+  }  // End of the 'navigateToBook' method
 
 }  // End of the 'BookListComponent' class

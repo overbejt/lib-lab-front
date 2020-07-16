@@ -1,1 +1,15 @@
-<p>book-list works!</p>
+<div class="container">
+    <button type="button" (click)="navigateToBook()" class="btn btn-success mb-2">Add a Book</button>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <th scope="col">Title</th>
+            <th scope="col">ISBN</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td>{{ book.title }}</td>
+                <td>{{ book.isbn }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
