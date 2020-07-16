@@ -12,7 +12,8 @@ import { SignupComponent } from './signup/signup.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { LogoutComponent } from './logout/logout.component';
 import { BookComponent } from './book/book.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpIntercepterService } from './service/http-intercepter.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,14 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,  // Needed for ngModel
     HttpClientModule // Needed for http
   ],
-  providers: [],
+  providers: [
+    { 
+      // Need this for my HTTP Interceptor service to work
+      provide : HTTP_INTERCEPTORS, 
+      useClass : HttpIntercepterService, 
+      multi : true 
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
