@@ -47,9 +47,6 @@ export class BookListComponent implements OnInit {
    * they can add/update a book.
    */
   navigateToBook(book : Book) {
-    // TODO: This method keeps making the error page pop up.  Need to take a 
-    //       fresh look at it later.
-    // Declaring 
     // Check if book is undefined, AKA creating a new book
     if (book === undefined) {
       // When it is, initialize it to a book with no state variables initialized
@@ -58,7 +55,7 @@ export class BookListComponent implements OnInit {
     console.log('Editing: ');
     console.log(book);
     // Navigate to the book page, passing this book object as a parameter
-    this.router.navigate(['book/', id]);
+    this.router.navigate(['book/', book.id]);
   }  // End of the 'navigateToBook' method
 
   /**
@@ -69,11 +66,6 @@ export class BookListComponent implements OnInit {
    * @param bookId The Id of the Book object that the user wants to edit.
    */
   updateBook(bookId : number) {    
-    // // Find the book the user selected
-    // let toEdit = this.books.find(b => b.id === bookId);
-    // console.log('Editing: ');
-    // console.log(toEdit);
-    
     // Navigate to the book page and pass the selected book as a parameter    
     this.router.navigate(['book/', bookId]);
   }  // End of the 'updateBook' method
