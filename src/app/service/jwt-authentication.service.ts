@@ -23,7 +23,7 @@ export class JwtAuthenticationService {
    */
   login(username, password) {
     // Set up the URL    
-    let url = `${API_URL}/login`;
+    let url = `${API_URL}/login`; 
     // Build the body of the POST request
     let body = { 
       username : username, 
@@ -34,7 +34,7 @@ export class JwtAuthenticationService {
       map(
         data => {
           console.log('token recieved');
-          console.log(data);
+          // console.log(data);
           // Store the username
           sessionStorage.setItem(AUTHENTICATED_USER, username);
           // Store the token

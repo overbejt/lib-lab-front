@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
         console.log('successful login');
       }, 
       error => {
+        console.log('login FAILED');
+        console.log(error);
         // Update the error message
         this.errorMsg = 'Invalid Login Credentials';
         // Toggle the validLogin boolean
