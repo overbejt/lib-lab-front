@@ -3,6 +3,7 @@
     <button type="button" 
         (click)="updateBook(-1)" 
         class="btn btn-success mb-2">
+        <i class="fa fa-plus"></i>
         Add a Book
     </button>
     <table class="table table-striped">
@@ -20,13 +21,15 @@
                     <button type="button" 
                         (click)="updateBook(book.id)" 
                         class="btn btn-warning">
+                        <i class="fa fa-edit"></i>
                         Edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" 
+                    <button type="button"                         
                         (click)="deleteBook(book.id)" 
                         class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
                         Delete
                     </button>
                 </td>
