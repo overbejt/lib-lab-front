@@ -44,15 +44,15 @@ export class DataService {
    */
   saveBook(book : Book) {
     // Define URL
-    let url = `${API_URL}${API_URI}/books`;
-    // Define headers
-    let headerString = { 'Content-Type' : 'application/json' };
+    let url = `${API_URL}${API_URI}/books/${book.id}`;
+    // Define the body 
+    let body = { 
+      id : book.id,
+      title : book.title,
+      isbn : book.isbn
+    }
     // Send back the observable
-    return this.http.put(
-      url,                        // Set the URL
-      { body : book },            // Set the body
-      { headers : headerString }  // Set the header
-    );    
+    return this.http.put(url, body);
   }  // End of the 'saveBook' method
 
 }  // End of the 'DataService' class

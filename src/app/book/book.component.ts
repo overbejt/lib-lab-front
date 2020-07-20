@@ -12,6 +12,7 @@ export class BookComponent implements OnInit {
   // State variables
   id : number;
   book : Book;
+  errorMsg : string;
 
   constructor(
     private route : ActivatedRoute,
@@ -26,8 +27,7 @@ export class BookComponent implements OnInit {
     this.book = new Book(this.id, '', '');
     // Check if not creating a new book
     if (this.id != -1) {
-      // TODO: Add endpoint to API for retrieving a specific book by id      
-      // Initialize this.book to the result of the API call
+      // When not creating a new book, retrieve it from the API
       this.retrieveBook();
     }
   }  // End of the 'ngOnInit' method
@@ -69,6 +69,8 @@ export class BookComponent implements OnInit {
       error => {
         console.log('Failed to save the book');
         console.log(error);
+        // Set the error message
+        this.errorMsg = 'Failed to save the book';
       }
     );
     // Navigate back to the list-book page

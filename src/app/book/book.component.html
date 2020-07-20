@@ -1,1 +1,19 @@
-<p>book works!</p>
+<div class="container">
+    <h3 class="text-center">Book</h3>
+    <div class="alert alert-danger" *ngIf='!!errorMsg'>{{ errorMsg }}</div>
+    <form (ngSubmit)=saveBook()>
+        <div class="form-group">
+          <label for="bookTitle">Title</label>
+          <input type="text" class="form-control" id="bookTitle" name="bookTitleField" placeholder="Enter The Book's Title" [(ngModel)]="book.title">      
+        </div>
+        <div class="form-group">
+          <label for="isbn">ISBN</label>
+          <input type="text" class="form-control" id="isbn" name="isbnField" placeholder="Enter the ISBN" [(ngModel)]="book.isbn">
+        </div>
+        <button type="submit" 
+            class="btn btn-success">
+            <i class="fa fa-save"></i>
+            Save
+        </button>
+    </form>
+</div>

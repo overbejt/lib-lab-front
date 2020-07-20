@@ -37,26 +37,10 @@ export class BookListComponent implements OnInit {
       },
       error => {
         console.log(error);
-        // Should handle error and let user know what happened
+        // TODO: Should handle error and let user know what happened
       }
     );
   }  // End of the 'getBooks' method
-
-  /**
-   * This is the method that will redirect the user to the Book page so that 
-   * they can add/update a book.
-   */
-  navigateToBook(book : Book) {
-    // Check if book is undefined, AKA creating a new book
-    if (book === undefined) {
-      // When it is, initialize it to a book with no state variables initialized
-      book = new Book(undefined, undefined, undefined);
-    }
-    console.log('Editing: ');
-    console.log(book);
-    // Navigate to the book page, passing this book object as a parameter
-    this.router.navigate(['book/', book.id]);
-  }  // End of the 'navigateToBook' method
 
   /**
    * This is the method that will allow the user to update the selected book.
