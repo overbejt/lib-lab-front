@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_URL } from '../app.constants';
+import { API_URL, API_URI } from '../app.constants';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class DataService {
    */
   getBooks() {
     // Define the URL
-    let url = `${API_URL}/books`;
+    let url = `${API_URL}${API_URI}/books`;
     // Send back the observable
     return this.http.get<Book[]>(url);
   }  // End of the 'getBooks' method
@@ -30,7 +30,7 @@ export class DataService {
    */
   getBookById(id : number) {
     // Define the URL
-    let url = `${API_URL}/books/${id}`;
+    let url = `${API_URL}${API_URI}/books/${id}`;
     // Send back the observable
     return this.http.get<Book>(url);
   }  // End of the 'getBookById' method
@@ -44,7 +44,7 @@ export class DataService {
    */
   saveBook(book : Book) {
     // Define URL
-    let url = `${API_URL}/books`;
+    let url = `${API_URL}${API_URI}/books`;
     // Define headers
     let headerString = { 'Content-Type' : 'application/json' };
     // Send back the observable
