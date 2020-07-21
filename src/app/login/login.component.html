@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <h3 class="text-center col-12">Log In</h3>
     <span class="col-lg-2" *ngIf="!validLogin"></span>
-    <div class="alert alert-danger col-lg-6 ml-1 mr-1" *ngIf="!validLogin">{{ errorMsg }}</div>
+    <div class="alert alert-danger col-lg-6 ml-1 mr-1" *ngIf="errorMsg">{{ errorMsg }}</div>
     <span class="col-lg-2" *ngIf="!validLogin"></span>
     <form (ngSubmit)=handleLogin() class="col-lg-6">
         <div class="form-group">

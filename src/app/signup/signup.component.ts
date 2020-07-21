@@ -78,7 +78,6 @@ export class SignupComponent implements OnInit {
       // Otherwise, toggle the error message on
       this.validSignup = false;
     }
-      
   }  // End of the 'handleSignup' method
 
 }  // End of the 'SignupComponent' class

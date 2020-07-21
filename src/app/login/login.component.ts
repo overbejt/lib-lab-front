@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   username : string;
   password : string;
   validLogin = true;
-  errorMsg = 'Invalid Login Credentials';
+  errorMsg : string;
 
   constructor(
     private router : Router,
@@ -23,25 +23,54 @@ export class LoginComponent implements OnInit {
   }
 
   /**
+   * This is the method that will validate the username entered by the user.
+   * 
+   * @returns True when the username is not empty.  Otherwise, false.
+   */
+  validUsername() : boolean {
+    
+    if (this.username != null && this.username.length < 1) {
+      this.errorMsg = 'Invalid Username';
+      return false;
+    }
+    return true;
+  }  // End of the 'validUsername' method
+
+  /**
+   * This is the method that will validate the password entered by the user.
+   * 
+   * @returns True when the password is not empty.  Otherwise, false.
+   */
+  validPassword() : boolean {
+    if (this.password != null && this.password.length < 1) {
+      this.errorMsg = 'Invalid Password';
+      return false;
+    }
+    return true;
+  }  // End of the 'validPassword' method
+  
+  /**
    * This is the method that will perform authentication when a user logs in.
    */
   handleLogin() {
-    // Attempt to login
-    this.jwt.login(this.username, this.password).subscribe(
-      data => {
-        // Navigate to the book list page
-        this.router.navigate(['list-book']);
-        console.log('successful login');
-      }, 
-      error => {
-        console.log('login FAILED');
-        console.log(error);
-        // Update the error message
-        this.errorMsg = 'Invalid Login Credentials';
-        // Toggle the validLogin boolean
-        this.validLogin = false;
-      }
-    );
+    // Make sure both fields are filled in
+    if (this.validUsername() && this.validPassword()) {
+      // Attempt to login
+      this.jwt.login(this.username, this.password).subscribe(
+        data => {
+          // Navigate to the book list page
+          this.router.navigate(['list-book']);
+          console.log('successful login');
+        }, 
+        error => {
+          console.log('login FAILED');
+          console.log(error);
+          // Update the error message
+          this.errorMsg = 'Invalid Login Credentials';
+          // Toggle the validLogin boolean
+          this.validLogin = false;
+        }
+      );
+    }
   }  // End of the 'handleLogin' method
-
 }  // End of the 'LoginComponent' class
