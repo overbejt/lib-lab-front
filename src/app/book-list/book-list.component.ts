@@ -61,7 +61,7 @@ export class BookListComponent implements OnInit {
       },
       error => {
         console.log(error);
-        // TODO: Should handle error and let user know what happened
+        this.errorMsg = 'Failed to contact the API!';
       }
     );
   }  // End of the 'getBooks' method
