@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService, Book } from '../service/data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -11,23 +11,47 @@ export class BookListComponent implements OnInit {
 
   // State variables
   books : Book[];
+  errorMsg : string;
+  successMsg : string;
   
   constructor(
     private data : DataService,
+    private route : ActivatedRoute,
     private router : Router 
   ) { }
 
   ngOnInit(): void {
     // Get the books
     this.getBooks();
+    // Check if there is a PUT error
+    this.checkPathParams();
   }
+
+  /**
+   * This is the method that will check if there is a parameter in the URL.  
+   * When there is, it will handle it and invoke the proper method to 
+   * initialize the message variable.
+   */
+  checkPathParams() : void {
+    // Get the id from the router
+    let hasError = this.route.snapshot.params['putError'];
+    // Check if the PUT request was successful
+    if (hasError === 'true') {
+      this.errorMsg = 'Failed to save the book!';
+
+      // Check if the PUT request failed
+    } else if (hasError === 'false') {
+      this.successMsg = 'The book was saved successfuly!';
+    }
+    // Otherwise, do nothing
+  }  // End of the 'checkPathParams' method
 
   /**
    * This is the method that will tell the data service to get the books from 
    * the API.  Then it will initialize the 'books' array to the array of 
    * books returned from the API.
    */
-  getBooks() {
+  getBooks() : void {
     console.log('Attempting to get books');
     // Get the books from the backend
     this.data.getBooks().subscribe(
@@ -49,7 +73,7 @@ export class BookListComponent implements OnInit {
    * 
    * @param bookId The Id of the Book object that the user wants to edit.
    */
-  updateBook(bookId : number) {    
+  updateBook(bookId : number) : void {    
     // Navigate to the book page and pass the selected book as a parameter    
     this.router.navigate(['book/', bookId]);
   }  // End of the 'updateBook' method
@@ -61,7 +85,7 @@ export class BookListComponent implements OnInit {
    * 
    * @param bookId The id of the Book object that the user wants to delete.
    */
-  deleteBook(bookId : number) {
+  deleteBook(bookId : number) : void {
     // Make magic happen
   }  // End of the 'deleteBook' method
 

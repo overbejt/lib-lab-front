@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JwtAuthenticationService } from '../service/jwt-authentication.service';
 import { Book, DataService } from '../service/data.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class BookComponent implements OnInit {
   // State variables
   id : number;
   book : Book;
-  errorMsg : string;
+  hasError : boolean;
 
   constructor(
     private route : ActivatedRoute,
@@ -49,6 +48,9 @@ export class BookComponent implements OnInit {
       error => {
         // Log the error if something goes wrong
         console.log(error);
+        this.hasError = true;
+        // Navigate back to the book list page
+        this.navigateToBookListPage();
       }
     );
   }  // End of the 'retrieveBook' method
@@ -64,13 +66,13 @@ export class BookComponent implements OnInit {
       data => {
         // TMP
         console.log('Saving book');
-        console.log(this.book);                
+        console.log(this.book);
+        this.hasError = false;
       },
       error => {
         console.log('Failed to save the book');
         console.log(error);
-        // Set the error message
-        this.errorMsg = 'Failed to save the book';
+        this.hasError = true;
       }
     );
     // Navigate back to the list-book page
@@ -79,12 +81,9 @@ export class BookComponent implements OnInit {
 
   /**
    * This is the method that will navigate back to the Book List page.
-   * 
-   * // TODO: Add a parameter to let the list-book page know if it was 
-   *          successful or not.
    */
   navigateToBookListPage() {
-    this.router.navigate(['list-book']);
+    this.router.navigate(['list-book', this.hasError]);
   }  // End of the 'navigateToBookListPage' method
 
 }  // End of the 'BookComponent' class

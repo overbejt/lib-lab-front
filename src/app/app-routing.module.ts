@@ -26,6 +26,10 @@ import { RouteGuardService } from './service/route-guard.service';
     canActivate : [ RouteGuardService ] 
   },
   { 
+    path : "list-book/:putError", component : BookListComponent, 
+    canActivate : [ RouteGuardService ] 
+  },
+  { 
     path : "book/:id", component : BookComponent,
     canActivate : [ RouteGuardService ] 
   },

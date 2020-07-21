@@ -1,6 +1,5 @@
 <div class="container">
     <h3 class="text-center">Book</h3>
-    <div class="alert alert-danger" *ngIf='!!errorMsg'>{{ errorMsg }}</div>
     <form (ngSubmit)=saveBook()>
         <div class="form-group">
           <label for="bookTitle">Title</label>

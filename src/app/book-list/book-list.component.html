@@ -1,5 +1,7 @@
 <div class="container">
     <h3 class="text-center">All the Books</h3>
+    <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+    <div class="alert alert-success" *ngIf="successMsg">{{ successMsg }}</div>
     <button type="button" 
         (click)="updateBook(-1)" 
         class="btn btn-success mb-2">
