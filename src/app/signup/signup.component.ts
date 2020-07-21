@@ -10,9 +10,8 @@ import { SignUpService } from '../service/sign-up.service';
 export class SignupComponent implements OnInit {
   
   // State variables
-  errorMsg = 'Invalid Sign up credentials';
+  errorMsg : string;
   usernameInUse : boolean;
-  validSignup = true;
   username : string;
   password : string;
 
@@ -67,17 +66,11 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['login']);        
           console.log('Successful signup');
         }, 
-        error => {          
-          // Otherwise, toggle the error message on
-          this.validSignup = false;  
+        error => {
           // Change the error message 
           this.errorMsg = 'Username is already in use';
         }
       );
-    } else {
-      // Otherwise, toggle the error message on
-      this.validSignup = false;
     }
   }  // End of the 'handleSignup' method
-
 }  // End of the 'SignupComponent' class
