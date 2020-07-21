@@ -11,7 +11,6 @@ export class LoginComponent implements OnInit {
   // State variables
   username : string;
   password : string;
-  validLogin = true;
   errorMsg : string;
 
   constructor(
@@ -28,7 +27,6 @@ export class LoginComponent implements OnInit {
    * @returns True when the username is not empty.  Otherwise, false.
    */
   validUsername() : boolean {
-    
     if (this.username != null && this.username.length < 1) {
       this.errorMsg = 'Invalid Username';
       return false;
@@ -67,8 +65,6 @@ export class LoginComponent implements OnInit {
           console.log(error);
           // Update the error message
           this.errorMsg = 'Invalid Login Credentials';
-          // Toggle the validLogin boolean
-          this.validLogin = false;
         }
       );
     }
