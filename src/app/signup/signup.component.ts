@@ -31,9 +31,10 @@ export class SignupComponent implements OnInit {
    * @returns True when the username is not empty.  Otherwise returns false.
    */
   validUsername () : boolean {
-    if (this.username != null) {
+    if (this.username != null && this.username.length > 5) {
       return true;
     }
+    this.errorMsg = 'Invalid Username';
     return false;
   }  // End of the 'validUsername' method
 
@@ -43,9 +44,10 @@ export class SignupComponent implements OnInit {
    * @returns True when the password iis not empty.  Otherwise returns false.
    */
   validPassword() : boolean {
-    if (this.password != null) {
+    if (this.password != null && this.password.length > 5) {
       return true;
     }
+    this.errorMsg = 'Invalid Password';
     return false;
   }  // End of the 'validPassword' method
 
