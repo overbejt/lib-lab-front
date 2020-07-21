@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_URL } from '../app.constants';
+import { API_URL, API_URI } from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class SignUpService {
    */
   signup(username, password) {    
     // Set up the URL    
-    let url = `${API_URL}/users/sign-up`;
+    let url = `${API_URL}${API_URI}/users/sign-up`;
     // Build the body of the POST request
     let body = { username : username, password : password };
     // Send back the observable
