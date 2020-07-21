@@ -1,9 +1,10 @@
 #main {
-    min-height: 100vh;
+    min-height: calc(100vh - 48px);
     padding-bottom: 85px;
 }
 
 #page {
-    width: 100vw;
     position: relative;
+    display: block;
+    height: 100%;
 }
