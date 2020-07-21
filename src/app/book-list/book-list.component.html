@@ -1,41 +1,43 @@
 <div class="container">
-    <h3 class="text-center">All the Books</h3>
-    <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
-    <div class="alert alert-success" *ngIf="successMsg">{{ successMsg }}</div>
+    <h3 class="text-center col-12">All the Books</h3>
+    <div class="alert alert-danger col-12" *ngIf="errorMsg">{{ errorMsg }}</div>
+    <div class="alert alert-success col-12" *ngIf="successMsg">{{ successMsg }}</div>
     <button type="button" 
         (click)="updateBook(-1)" 
-        class="btn btn-success mb-2">
+        class="btn btn-success mb-2 col-lg-2 col-md-12 col-sm-12 mr-auto">
         <i class="fa fa-plus"></i>
         Add a Book
     </button>
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <th scope="col">Title</th>
-            <th scope="col">ISBN</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let book of books">
-                <td>{{ book.title }}</td>
-                <td>{{ book.isbn }}</td>
-                <td>
-                    <button type="button" 
-                        (click)="updateBook(book.id)" 
-                        class="btn btn-warning">
-                        <i class="fa fa-edit"></i>
-                        Edit
-                    </button>
-                </td>
-                <td>
-                    <button type="button"                         
-                        (click)="deleteBook(book.id)" 
-                        class="btn btn-danger">
-                        <i class="fa fa-trash"></i>
-                        Delete
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <div class="table-responsive ml-auto mr-auto">
+        <table class="table table-striped col-12">
+            <thead class="thead-dark">
+                <th scope="col">Title</th>
+                <th scope="col">ISBN</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books">
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>
+                        <button type="button" 
+                            (click)="updateBook(book.id)" 
+                            class="btn btn-warning">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button"                         
+                            (click)="deleteBook(book.id)" 
+                            class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- End of table-responsive -->
+</div><!-- End of container -->
