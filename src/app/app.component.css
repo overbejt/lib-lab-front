@@ -1,0 +1,9 @@
+#main {
+    min-height: 100vh;
+    padding-bottom: 85px;
+}
+
+#page {
+    width: 100vw;
+    position: relative;
+}
