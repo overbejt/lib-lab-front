@@ -22,7 +22,8 @@
         </div>
         <button type="submit" 
           class="btn btn-primary col-lg-3 col-md-12">
-          <i class="fa fa-user"></i>
+          <i class="fa fa-user" *ngIf="!loading"></i>
+          <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
           Sign In
         </button>
     </form>

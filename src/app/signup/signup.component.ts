@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   usernameInUse : boolean;
   username : string;
   password : string;
+  loading = false;
 
   constructor(
     private signupService : SignUpService,
@@ -57,6 +58,8 @@ export class SignupComponent implements OnInit {
   handleSignup() : void {
     // Make sure that the username and password are not empty    
     if (this.validUsername() && this.validPassword()) {
+      // Toggle the loading boolean
+      this.loading = true;
       // Send the credentials to the back-end
       let execSignup = this.signupService.signup(this.username, this.password) 
       execSignup.subscribe(
@@ -69,6 +72,7 @@ export class SignupComponent implements OnInit {
         error => {
           // Change the error message 
           this.errorMsg = 'Username is already in use';
+          this.loading = false;
         }
       );
     }

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   username : string;
   password : string;
   errorMsg : string;
+  loading = false;
 
   constructor(
     private router : Router,
@@ -53,6 +54,8 @@ export class LoginComponent implements OnInit {
   handleLogin() {
     // Make sure both fields are filled in
     if (this.validUsername() && this.validPassword()) {
+      // Toggle the loading boolean
+      this.loading = true;
       // Attempt to login
       this.jwt.login(this.username, this.password).subscribe(
         data => {

@@ -21,7 +21,8 @@
             [(ngModel)]="password">
         </div>
         <button type="submit" 
-          class="btn btn-primary col-lg-3 col-md-12">          
+          class="btn btn-primary col-lg-3 col-md-12">
+          <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>  
           Submit
         </button>
     </form>
