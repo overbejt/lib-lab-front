@@ -67,6 +67,30 @@ export class BookListComponent implements OnInit {
   }  // End of the 'getBooks' method
 
   /**
+   * This is the method that will delete the selected book.  It will use the
+   * DataService service to send a DELET call to the API with the books's 
+   * id number.
+   * 
+   * @param bookId The id of the Book object that the user wants to delete.
+   */
+  deleteBook(bookId : number) : void {
+    console.log('Attempting to delete a book');
+    // Invoke the method from the data service to delete the selected book
+    this.data.deleteBook(bookId).subscribe(
+      data => {
+        console.log(data);
+        this.successMsg = 'Successfuly deleted the book!';
+        // Refresh the list of books
+        this.getBooks();
+      },
+      error => {
+        console.log(error);
+        this.errorMsg = 'Failed to delete the book!';
+      }
+    );
+  }  // End of the 'deleteBook' method
+
+  /**
    * This is the method that will allow the user to update the selected book.
    * It will use the DataService service to send a PUT request to the API 
    * with the book's id number.
@@ -77,16 +101,5 @@ export class BookListComponent implements OnInit {
     // Navigate to the book page and pass the selected book as a parameter    
     this.router.navigate(['book/', bookId]);
   }  // End of the 'updateBook' method
-
-  /**
-   * This is the method that will delete the selected book.  It will use the
-   * DataService service to send a DELET call to the API with the books's 
-   * id number.
-   * 
-   * @param bookId The id of the Book object that the user wants to delete.
-   */
-  deleteBook(bookId : number) : void {
-    // Make magic happen
-  }  // End of the 'deleteBook' method
-
+  
 }  // End of the 'BookListComponent' class

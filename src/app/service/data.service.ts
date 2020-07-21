@@ -55,6 +55,20 @@ export class DataService {
     return this.http.put(url, body);
   }  // End of the 'saveBook' method
 
+  /**
+   * This is the method that will send the ID of a book object to the DELETE 
+   * endpoint on the API.  It will delete the supplied book.  It will return 
+   * an observable.
+   * 
+   * @param book The book that has been selected to be deleted.
+   */
+  deleteBook(bookId : number) {
+    // Define the URL
+    let url = `${API_URL}${API_URI}/books/${bookId}`;
+    // Send back the observable
+    return this.http.delete(url);
+  }  // End of the 'deleteBook' method
+
 }  // End of the 'DataService' class
 
 /**

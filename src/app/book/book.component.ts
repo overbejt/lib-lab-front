@@ -49,7 +49,7 @@ export class BookComponent implements OnInit {
         // Log the error if something goes wrong
         console.log(error);
         this.hasError = true;
-        // Navigate back to the book list page
+        // Escape early and navigate back to the book list page
         this.navigateToBookListPage();
       }
     );
@@ -68,22 +68,26 @@ export class BookComponent implements OnInit {
         console.log('Saving book');
         console.log(this.book);
         this.hasError = false;
+        // Navigate back to the list-book page
+        this.navigateToBookListPage();
       },
       error => {
         console.log('Failed to save the book');
         console.log(error);
         this.hasError = true;
+        // Navigate back to the list-book page
+        this.navigateToBookListPage();
       }
     );
-    // Navigate back to the list-book page
-    this.navigateToBookListPage();
   }  // End of the 'saveBook' method
 
   /**
    * This is the method that will navigate back to the Book List page.
    */
   navigateToBookListPage() {
-    this.router.navigate(['list-book', this.hasError]);
+    // Parse the boolean to a string
+    let error = String(this.hasError);
+    this.router.navigate(['list-book', error]);
   }  // End of the 'navigateToBookListPage' method
 
 }  // End of the 'BookComponent' class
